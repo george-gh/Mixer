@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json; charset=UTF-8" -d '{"channels":[{"url":"http://www.google.com","type":"video"},{"url":"http://www.interact.it","type":"video"}],"streamID":"abcdef"}' http://localhost:3000/channels/create_channels

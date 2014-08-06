@@ -1,0 +1,3 @@
+channels_url: http://validate.jsontest.com/?json=%5BJSON-code-to-validate%5D
+username: test
+password: test 
