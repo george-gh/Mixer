@@ -13,7 +13,7 @@ class ChannelsController < ApplicationController
     # Obtain an array of hashes
     channels_arr = params["channels"]
     manager = StreamingManager::ChannelManager.new
-    channels = manager.channel_list channels_arr
+    @channels = manager.channels_list channels_arr
     redirect_to channels_path
   end
 
