@@ -1,6 +1,13 @@
 # Call external api to retrive json data to build channels availables
 class StreamingManager::ChannelManager
 
+  CLASS_TYPE_MATCHER = {
+    "video" => Video,
+    "audio" => Audio,
+    "image" => Image,
+    "flash" => Flash
+  }
+
   # Process an http POST with json data and return a channels array
   def channels_list ch_arr
     channels = build_channels ch_arr
@@ -50,7 +57,9 @@ class StreamingManager::ChannelManager
     return [] if ch_arr.blank?
     channels = []
     ch_arr.each do |channel_hash|
-      ch = Channel.new(url: channel_hash["url"].to_s, type: channel_hash["type"].to_s)
+      klass = CLASS_TYPE_MATCHER[channel_hash["type"]]
+      klass = Channel if klass.blank?
+      ch = klass.new(url: channel_hash["url"])
       channels << ch
     end
     return channels
