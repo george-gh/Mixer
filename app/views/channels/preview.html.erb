@@ -1,0 +1,9 @@
+<h1>Channels preview</h1>
+
+<%= select_tag "Channels", 
+               options_from_collection_for_select(@channels, "url", "url"), 
+               prompt: "Select channel",
+               onchange: "startPreview(this);" %>
+
+<%= render partial: "channel_preview" %>
+

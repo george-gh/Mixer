@@ -2,6 +2,7 @@ class Channel
 
   include ActiveModel::Model
   extend ActiveModel::Naming
+  extend ActiveModel::Serializers
 
   attr_accessor :name, :protocol, :ip, :port, :url, :type
 
@@ -10,7 +11,6 @@ class Channel
   validates :ip, format: { with: /\A\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\z/, message: "Invalid IP" }
   validates :type, inclusion: { in: %w(video image audio flash), message: "%(value) is not a supported type" }
   validates :url, presence: true
-
 
   def get_stream
     "#{protocol}://#{ip}:#{port}"

@@ -1,0 +1,10 @@
+{
+  "streamID": "0001",
+  "channels":
+     [
+	{ "url": "rtsp://10.1.7.30:8000", "type": "video" },
+	{ "url": "rtsp://10.1.7.31:3000", "type": "video" },
+	{ "url": "rtsp://10.1.7.33:8080", "type": "image" },
+	{ "url": "rtsp://10.1.7.35:3000", "type": "audio" }
+      ]
+}

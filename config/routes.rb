@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :channels do
     collection do
       post 'create_channels'
+      get 'preview'
     end
   end
 
