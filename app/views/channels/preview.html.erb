@@ -1,9 +1,21 @@
+<% content_for :video_player do %>
+  <%= javascript_include_tag "http://jwpsrv.com/library/Dzd+ah75EeSPACIACtqXBA.js" %>
+<% end %>
+
 <h1>Channels preview</h1>
 
 <%= select_tag "Channels", 
-               options_from_collection_for_select(@channels, "url", "url"), 
+               options_from_collection_for_select(@videos, "url", "name"), 
                prompt: "Select channel",
                onchange: "startPreview(this);" %>
 
 <%= render partial: "channel_preview" %>
 
+<div class="overlays_preview" id="overlays_001">
+  <% unless @overlays.blank? %>
+    <h3>Overlays</h3>
+    <% @overlays.each do |overlay| %>
+      <%= image_tag overlay.url %>
+    <% end %>
+  <% end %>
+</div>

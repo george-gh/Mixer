@@ -2,9 +2,10 @@
   "streamID": "0001",
   "channels":
      [
-	{ "url": "rtsp://10.1.7.30:8000", "type": "video" },
-	{ "url": "rtsp://10.1.7.31:3000", "type": "video" },
-	{ "url": "rtsp://10.1.7.33:8080", "type": "image" },
-	{ "url": "rtsp://10.1.7.35:3000", "type": "audio" }
+	{ "url": "rtmp://stream01.awsteleippica.com/rtmplive/live/Grigio?ticket=8910fa425d3989d0dd186ad810da6e4f", "type": "video" },
+	{ "url": "rtmp://stream02.awsteleippica.com/rtmplive/live/Verde?ticket=8899fa425d3989d0dd186ad810da6e4f", "type": "video" },
+	{ "url": "http://www.videoassemblea.it/content-images/logo-interact-footer.png", "type": "image" },
+	{ "url": "http://audio.radio24.it/radio24_audio/2013/rassegna-stampa.mp3", "type": "audio" },
+        { "url": "http://10.1.2.21/cgi-bin/camera", "type": "video" }
       ]
 }

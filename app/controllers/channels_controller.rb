@@ -1,6 +1,7 @@
 class ChannelsController < ApplicationController
 
   skip_before_filter :verify_authenticity_token, only: :create_channels
+  layout 'channel'
 
   # Show all channels availables
   def index
@@ -21,6 +22,8 @@ class ChannelsController < ApplicationController
   def preview
     manager = StreamingManager::ChannelManager.new
     @channels = manager.get_channels
+    @videos = @channels.select{|ch| ch.type.eql?"video"}
+    @overlays = @channels.select{|ch| ch.type.eql?"image"}
   end
 
   private

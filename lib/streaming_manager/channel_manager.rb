@@ -56,10 +56,10 @@ class StreamingManager::ChannelManager
   def build_channels ch_arr
     return [] if ch_arr.blank?
     channels = []
-    ch_arr.each do |channel_hash|
+    ch_arr.each_with_index do |channel_hash, index|
       klass = CLASS_TYPE_MATCHER[channel_hash["type"]]
       klass = Channel if klass.blank?
-      ch = klass.new(url: channel_hash["url"])
+      ch = klass.new(url: channel_hash["url"], name:"Channel #{index}")
       channels << ch
     end
     return channels

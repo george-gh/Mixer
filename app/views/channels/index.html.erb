@@ -2,12 +2,14 @@
  
 <table>
   <tr>
+    <th>Name</th>
     <th>Url</th>
     <th>Type</th>
   </tr>
  
   <% @channels.each do |channel| %>
     <tr>
+      <td><%= channel.name %></td>
       <td><%= channel.url %></td>
       <td><%= channel.type %></td>
     </tr>
