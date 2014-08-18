@@ -14,8 +14,47 @@
 <div class="overlays_preview" id="overlays_001">
   <% unless @overlays.blank? %>
     <h3>Overlays</h3>
-    <% @overlays.each do |overlay| %>
-      <%= image_tag overlay.url %>
-    <% end %>
+    <h4>Select the overlay to apply to selected stream:</h4>
+    <div class="overlays_container" id="main_overlays">
+      <%= form_tag "set_overlay" do -%>
+        <% @overlays.each do |overlay| %>
+          <div class="single_overlay_preview" id="overlay_<%= overlay.name %>">
+            <%= radio_button_tag "channels", overlay.name, false, {onchange: "getSelected();"} %>
+            <%= image_tag overlay.url %>
+          </div>
+        <% end %>
+        <%= submit_tag "Apply" %>
+      <% end -%>
+    </div>
   <% end %>
 </div>
+
+<div class="output_stream_container" id="output_stream_container">
+  <h2>Output stream</h2>
+  <div class="output_stream" id="output_stream">
+
+  </div>
+</div>
+
+<%= javascript_tag do -%>
+function getSelected () {
+        var Selected = "";
+        var f = document.forms[0];
+        if(f.channels.checked)  {  // one element to fetch
+                Selected = f.view.value;
+        }
+        else {
+                for (var i = 0; i <= f.channels.length; i ++) {  //loop thur array
+                        if (f.view[i].checked)  {           // test to see if checked
+                                Selected = f.view[i].value;
+                        }
+                }
+        }
+        if (Selected == "") {
+                alert("Nothing selected");
+        }
+        else {
+                alert(Selected + ' Selected');   // report back
+        }
+}
+<% end -%>
