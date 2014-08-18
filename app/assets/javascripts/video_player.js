@@ -4,8 +4,8 @@ function startPreview(stream){
         var url = stream.value;
         jwplayer("myElement").setup({
             file: url,
-      	    height: 360,
-      	    width: 640,
+      	    height: 300,
+      	    width: 400,
       	    autostart: true
         });
     }
