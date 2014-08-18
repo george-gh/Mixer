@@ -2,10 +2,12 @@
   "streamID": "0001",
   "channels":
      [
-	{ "url": "rtmp://stream01.awsteleippica.com/rtmplive/live/Grigio?ticket=8910fa425d3989d0dd186ad810da6e4f", "type": "video" },
+	{ "url": "rtmp://stream03.awsteleippica.com/rtmplive/live/Sat?ticket=8899fa425d3989d0dd186ad810da6e4f", "type": "video" },
 	{ "url": "rtmp://stream02.awsteleippica.com/rtmplive/live/Verde?ticket=8899fa425d3989d0dd186ad810da6e4f", "type": "video" },
 	{ "url": "http://www.videoassemblea.it/content-images/logo-interact-footer.png", "type": "image" },
 	{ "url": "http://audio.radio24.it/radio24_audio/2013/rassegna-stampa.mp3", "type": "audio" },
-        { "url": "rtsp://10.1.7.172/MediaInput/h264/", "type": "video" }
+        { "url": "rtsp://10.1.7.172/MediaInput/h264/", "type": "video" },
+        { "url": "http://www.songsurgeon.com/application/views/frontend/static/img/index_v4/demo.png", "type": "image" },
+        { "url": "rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov", "type": "video" }
       ]
 }
