@@ -31,6 +31,15 @@ class StreamingManager::OutputMixer
   def launch_ffserver
     rr = %x[ps aux | grep ffserv]
     return if rr.include?"ffserver"
+    command = "nohup ffserver -f /etc/ffserver.conf &"
+    spawn(command)
+    return
+  end
+
+  # Check if ffserver is running, otherwise it launchs the service
+  def launch_ffserver
+    rr = %x[ps aux | grep ffserv]
+    return if rr.include?"ffserver"
     command = "nohup ffserver -f #{FFSERVER_CONF_PATH} &"
     spawn(command)
     return
