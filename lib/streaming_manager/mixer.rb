@@ -16,6 +16,7 @@ class StreamingManager::Mixer
   # Push output stream
   def push_stream
     launch_ffserver
+    sleep 2
     kill_ffplay
     kill_ffmpeg
     # apply_overlay
@@ -39,7 +40,7 @@ class StreamingManager::Mixer
   def launch_ffserver
     rr = %x[ps -C ffserver -o pid h]
     return unless rr.blank?
-    command = "nohup ffserver -f #{FFSERVER_CONF_PATH} &"
+    command = "nohup ffserver -f #{FFSERVER_CONF_PATH} > /dev/null &"
     spawn(command)
     return
   end
