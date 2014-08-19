@@ -4,10 +4,13 @@
 
 <h1>Channels preview</h1>
 
-<%= select_tag "Channels", 
-               options_from_collection_for_select(@videos, "url", "name"), 
-               prompt: "Select channel",
-               onchange: "startPreview(this);" %>
+<%= form_tag(output_channels_url) do -%>
+  <%= select_tag "Channels", 
+                 options_from_collection_for_select(@videos, "url", "name"), 
+                 prompt: "Select channel",
+                 onchange: "startPreview(this);" %>
+  <%= submit_tag "Generate stream!" %>
+<% end %>
 
 <%= render partial: "channel_preview" %>
 
