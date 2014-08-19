@@ -41,15 +41,13 @@ class ChannelsController < ApplicationController
   def output
     video_name = params["video"]
     video = @videos.select{|e| e.name.eql? video_name}
-    # overlay_name = params["overlay"]
-    # overlay = @overlays.select{|e| e.name.eql? overlay_name}
-    # audio_name = params["audio"]
-    # audio = @audios.select{|e| e.name.eql? audio_name}
-    @mixer = StreamingManager::OutputMixer.new(video)
-    @mixer.set_video video
-    # @manager.set_overlay overlay
-    # @manager.set_audio audio
+    overlay_name = params["overlay"]
+    overlay = @overlays.select{|e| e.name.eql? overlay_name}
+    audio_name = params["audio"]
+    audio = @audios.select{|e| e.name.eql? audio_name}
+    @mixer = StreamingManager::Mixer.new(video, overlay, audio)
     @mixer.push_stream
+    render nothing: true
   end
 
   private
