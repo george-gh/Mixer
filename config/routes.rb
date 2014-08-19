@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     collection do
       post 'create_channels'
       get 'preview'
+      post 'output'
     end
   end
 
