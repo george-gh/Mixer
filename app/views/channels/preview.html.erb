@@ -4,12 +4,16 @@
 
 <h1>Channels preview</h1>
 
+<%#= form_tag(output_channels_url, remote: true) do -%>
 <%= form_tag(output_channels_url) do -%>
   <%= select_tag "Channels", 
-                 options_from_collection_for_select(@videos, "url", "name"), 
+                 options_from_collection_for_select(@videos, "name", "name"), 
                  prompt: "Select channel",
                  onchange: "startPreview(this);" %>
   <%= submit_tag "Generate stream!" %>
+  <div class="stream_on" id="stream_on" style="display:none">
+    <p>Streaming via <%= link_to "Stream", "http://localhost:8090/live.flv" %></p>
+  </div>
 <% end %>
 
 <%= render partial: "channel_preview" %>
