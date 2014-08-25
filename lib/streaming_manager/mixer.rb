@@ -1,8 +1,6 @@
 class StreamingManager::Mixer
 
-  FEED_NAME = "feed1.ffm"
   FFSERVER_CONF_PATH = "/etc/ffserver.conf"
-  OUTPUT_STREAM_NAME = "live.flv"
 
   # Initialize OutputMixer with Video, Audio and Overlay objects
   def initialize _video = nil, _audio = nil, _overlay = nil
@@ -10,18 +8,16 @@ class StreamingManager::Mixer
     @audio = _audio
     @overlay = _overlay
     # @configuration = load_configuration
-    # @output = create_output_object
+    @output = create_output_object
   end
 
-  # Push output stream
+  # Main method: it pushes output stream
   def push_stream
     launch_ffserver
-    sleep 2
-    kill_ffplay
-    kill_ffmpeg
-    # apply_overlay
-    # apply_audio
-    generate_stream
+    sleep 3
+    # kill_ffplay
+    # kill_ffmpeg
+    stream_content
   end
 
   # private
@@ -86,24 +82,11 @@ class StreamingManager::Mixer
     # TODO
   end
 
-  # Using ffmpeg command, create the ffm stream for ffserver
-  def create_ffm_stream
-    return false if @video.blank?
-    cmd = "ffmpeg -i #{@video.url} -vcodec copy http://localhost:8090/#{FEED_NAME} &"
-    spawn(cmd)
-  # rescue Exception => ex
-  #   return ex.message
-  end
-
-  # Launch ffplay command to stream output
-  def generate_stream
-    create_ffm_stream
-    # try to delete next row
-    sleep 3
-    cmd = "ffplay http://localhost:8090/#{OUTPUT_STREAM_NAME} &"
-    spawn(cmd)
-  # rescue Exception => ex
-  #   return ex.message
+  # Push the stream via @output object
+  def stream_content
+    # apply overlay
+    # apply audio
+    @output.generate_stream
   end
 
 end
