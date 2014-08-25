@@ -39,14 +39,16 @@ class ChannelsController < ApplicationController
 
   # Using ffserver, ffmpeg e ffplay, send the single channel stream via url
   def output
-    video_name = params["video"]
-    video = @videos.select{|e| e.name.eql? video_name}
+    video_name = params["channels"]
+    video = @videos.detect{|e| e.name.eql? video_name}
     overlay_name = params["overlay"]
-    overlay = @overlays.select{|e| e.name.eql? overlay_name}
+    overlay = @overlays.detect{|e| e.name.eql? overlay_name}
     audio_name = params["audio"]
-    audio = @audios.select{|e| e.name.eql? audio_name}
+    audio = @audios.detect{|e| e.name.eql? audio_name}
+    p "[ChannelsController] Video url = #{video.url}"
     @mixer = StreamingManager::Mixer.new(video, overlay, audio)
-    @mixer.push_stream
+    p "[ChannelsController] Going to stream content..."
+    @mixer.stream_content
     render nothing: true
   end
 
